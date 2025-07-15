@@ -37,24 +37,23 @@ const Navbar = () => {
             <Link href="/" className="text-gray-700 hover:text-blue-500">
               Home
             </Link>
-            <Link href="/all-blogs" className="text-gray-700 hover:text-blue-500">
-              All Blogs
+            <Link href="/colleges" className="text-gray-700 hover:text-blue-500">
+              Colleges
             </Link>
-            {
+            <Link href="/admission" className="text-gray-700 hover:text-blue-500">
+              Admission
+            </Link>
+            <Link href="/my-college" className="text-gray-700 hover:text-blue-500">
+              My College
+            </Link>
+            {/* {
               user && (
                 <Link href="/add-blogs" className="text-gray-700 hover:text-blue-500">
-                  Add Blogs
+                  Admission
                 </Link>
               )
-            }
-            {
-              user && (
-                <Link href="/my-blogs" className="text-gray-700 hover:text-blue-500">
-                  My Blogs
-                </Link>
-              )
-            }
-            
+            } */}
+
           </div>
 
           {/* Right: Profile/Login */}
@@ -122,15 +121,25 @@ const Navbar = () => {
       {/* Mobile Menu Dropdown */}
       {isOpen && (
         <div className="md:hidden bg-white px-4 pb-4 space-y-2">
-          <Link href="/" className="block text-gray-700 hover:text-blue-500">
+          <Link href="/" className="text-gray-700 hover:text-blue-500">
             Home
           </Link>
-          <Link href="/about" className="block text-gray-700 hover:text-blue-500">
-            About
+          <Link href="/colleges" className="text-gray-700 hover:text-blue-500">
+            Colleges
           </Link>
-          <Link href="/blogs" className="block text-gray-700 hover:text-blue-500">
-            All Blogs
+          <Link href="/admission" className="text-gray-700 hover:text-blue-500">
+            Admission
           </Link>
+          <Link href="/my-college" className="text-gray-700 hover:text-blue-500">
+            My College
+          </Link>
+          {/* {
+              user && (
+                <Link href="/add-blogs" className="text-gray-700 hover:text-blue-500">
+                  Admission
+                </Link>
+              )
+            } */}
 
           <div className="flex items-center gap-3 pt-2">
             <FaUserCircle className="text-xl text-gray-600" />
