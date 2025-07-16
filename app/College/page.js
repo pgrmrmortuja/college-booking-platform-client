@@ -42,12 +42,12 @@ export default function AllColleges() {
             >
               {/* College Image */}
               <div className="w-full h-48 relative">
-                {/* <Image
-                  src={college.photo || "https://via.placeholder.com/400x200"}
+                <Image
+                  src={college?.college_image}
                   alt={college.college_name}
                   fill
                   className="object-cover rounded-t-xl"
-                /> */}
+                />
               </div>
 
               {/* College Info */}
