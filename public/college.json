@@ -1,0 +1,152 @@
+[
+  {
+    "college_name": "Dhaka College",
+    "college_image": "https://i.ibb.co/chf3cKBR/college1.jpg",
+    "admission_date": "2025-08-01",
+    "rating": 4.8,
+    "research_number": 120,
+    "research_history": "Pioneering in environmental science and urban development.",
+    "sports_info": "Cricket, Football, Basketball, Volleyball",
+    "events": "Annual Science Fair, Inter-College Debate, Cultural Week"
+  },
+  {
+    "college_name": "Notre Dame College",
+    "college_image": "https://i.ibb.co/Cp1GYWGq/college2.jpg",
+    "admission_date": "2025-07-15",
+    "rating": 4.9,
+    "research_number": 98,
+    "research_history": "Renowned for mathematical modeling and physics research.",
+    "sports_info": "Football, Table Tennis, Badminton",
+    "events": "Physics Olympiad, Science Fest, Annual Drama Night"
+  },
+  {
+    "college_name": "Rajshahi College",
+    "college_image": "https://i.ibb.co/Q36J1FLs/college3.jpg",
+    "admission_date": "2025-08-05",
+    "rating": 4.7,
+    "research_number": 105,
+    "research_history": "Focused on agricultural innovations and rural development.",
+    "sports_info": "Cricket, Athletics, Kabaddi",
+    "events": "Research Paper Presentation, College Day, Cultural Fest"
+  },
+  {
+    "college_name": "Comilla Victoria Government College",
+    "college_image": "https://i.ibb.co/rKJ9Ht0z/college4.jpg",
+    "admission_date": "2025-08-10",
+    "rating": 4.5,
+    "research_number": 80,
+    "research_history": "Specializes in local history and heritage studies.",
+    "sports_info": "Football, Handball, Cricket",
+    "events": "Heritage Seminar, College Sports Week, Music Night"
+  },
+  {
+    "college_name": "Government Azizul Haque College",
+    "college_image": "https://i.ibb.co/CK5yZvpV/college5.jpg",
+    "admission_date": "2025-08-07",
+    "rating": 4.4,
+    "research_number": 92,
+    "research_history": "Active in climate and weather pattern research.",
+    "sports_info": "Volleyball, Badminton, Athletics",
+    "events": "Climate Talk Show, Freshers Reception, Sports Carnival"
+  },
+  {
+    "college_name": "Holy Cross College",
+    "college_image": "https://i.ibb.co/WNPwkQD6/college6.jpg",
+    "admission_date": "2025-07-20",
+    "rating": 4.8,
+    "research_number": 110,
+    "research_history": "Known for women empowerment and gender studies.",
+    "sports_info": "Basketball, Table Tennis, Badminton",
+    "events": "Leadership Camp, Girls in Tech Seminar, Drama Show"
+  },
+  {
+    "college_name": "Adamjee Cantonment College",
+    "college_image": "https://i.ibb.co/whJVRVN1/college7.jpg",
+    "admission_date": "2025-07-25",
+    "rating": 4.6,
+    "research_number": 87,
+    "research_history": "Focused on military science and strategic studies.",
+    "sports_info": "Parade, Football, Cricket",
+    "events": "Victory Day Celebration, Leadership Talk, Debate Fest"
+  },
+  {
+    "college_name": "Chittagong College",
+    "college_image": "https://i.ibb.co/zhz7zjPz/college8.jpg",
+    "admission_date": "2025-08-03",
+    "rating": 4.3,
+    "research_number": 78,
+    "research_history": "Marine biology and port-related research.",
+    "sports_info": "Swimming, Football, Volleyball",
+    "events": "Sea Research Conference, Sports Day, Cultural Night"
+  },
+  {
+    "college_name": "Government Hazi Mohammad Mohsin College",
+    "college_image": "https://i.ibb.co/v4Qcb61c/college9.jpg",
+    "admission_date": "2025-07-30",
+    "rating": 4.5,
+    "research_number": 95,
+    "research_history": "Strong background in chemistry and material science.",
+    "sports_info": "Cricket, Badminton, Athletics",
+    "events": "Chem Carnival, Annual Sports, Independence Day Events"
+  },
+  {
+    "college_name": "Dhaka City College",
+    "college_image": "https://i.ibb.co/Y46X2RXL/college10.jpg",
+    "admission_date": "2025-08-02",
+    "rating": 4.2,
+    "research_number": 65,
+    "research_history": "IT and software development-based research.",
+    "sports_info": "E-sports, Cricket, Football",
+    "events": "Hackathon, ICT Fair, Youth Summit"
+  },
+  {
+    "college_name": "Viqarunnisa Noon College",
+    "college_image": "https://i.ibb.co/8DkMK5LY/college11.jpg",
+    "admission_date": "2025-07-22",
+    "rating": 4.9,
+    "research_number": 102,
+    "research_history": "Educational psychology and women leadership programs.",
+    "sports_info": "Basketball, Table Tennis",
+    "events": "Youth Conference, Music Fest, Academic Olympiad"
+  },
+  {
+    "college_name": "Govt. Shaheed Suhrawardy College",
+    "college_image": "https://i.ibb.co/TM6MnZLw/college12.jpg",
+    "admission_date": "2025-08-06",
+    "rating": 4.1,
+    "research_number": 55,
+    "research_history": "Focuses on political science and governance.",
+    "sports_info": "Football, Cricket",
+    "events": "Democracy Day Talk, Essay Competition, Film Fest"
+  },
+  {
+    "college_name": "Cantonment Public College, Rangpur",
+    "college_image": "https://i.ibb.co/wfrQDN5/college13.jpg",
+    "admission_date": "2025-07-28",
+    "rating": 4.4,
+    "research_number": 60,
+    "research_history": "Environmental conservation and rural development.",
+    "sports_info": "Cricket, Basketball, Track & Field",
+    "events": "Green Earth Campaign, Quiz Fest, Army Exhibition"
+  },
+  {
+    "college_name": "Mymensingh Girls’ Cadet College",
+    "college_image": "https://i.ibb.co/Mk4mDsdr/college14.jpg",
+    "admission_date": "2025-07-18",
+    "rating": 4.7,
+    "research_number": 70,
+    "research_history": "Cadet leadership, defense awareness & community welfare.",
+    "sports_info": "Obstacle Course, Volleyball, Parade",
+    "events": "Cadet Parade, Debate Show, Inter-cadet Contest"
+  },
+  {
+    "college_name": "BAF Shaheen College Dhaka",
+    "college_image": "https://i.ibb.co/Y4B62pv9/college15.jpg",
+    "admission_date": "2025-08-04",
+    "rating": 4.6,
+    "research_number": 88,
+    "research_history": "Aviation awareness and aerospace basics.",
+    "sports_info": "Paragliding, Football, Cricket",
+    "events": "Air Force Awareness Day, Science Olympiad, Music Night"
+  }
+]
