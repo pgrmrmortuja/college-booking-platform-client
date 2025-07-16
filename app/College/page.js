@@ -4,7 +4,7 @@ import Loading from '../loading';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
 import Link from 'next/link'
 import Image from 'next/image';
-import { FaStar } from 'react-icons/fa';
+import { Rating } from 'react-simple-star-rating'
 
 export default function AllColleges() {
   const axiosPublic = useAxiosPublic();
@@ -55,13 +55,15 @@ export default function AllColleges() {
                 <h2 className="text-xl font-semibold mb-2">{college.college_name}</h2>
 
                 {/* Rating with star icon */}
-                <div className="flex items-center text-yellow-500 mb-2">
-                  {[...Array(5)].map((_, index) => (
-                    <FaStar
-                      key={index}
-                      className={index < Math.round(college.rating) ? 'text-yellow-500' : 'text-gray-300'}
-                    />
-                  ))}
+                <div className="flex items-center mb-2">
+                  <Rating
+                    readonly
+                    initialValue={college.rating}
+                    size={20}
+                    SVGstyle={{ display: "inline-block" }}
+                    allowFraction
+                    fillColor="#facc15"
+                  />
                   <span className="ml-2 text-sm text-gray-700">{college.rating?.toFixed(1)}</span>
                 </div>
 
