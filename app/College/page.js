@@ -1,10 +1,11 @@
 "use client"
+//rfc 
 import React, { useEffect, useState } from 'react'
-import Loading from '../loading';
-import useAxiosPublic from '@/hooks/useAxiosPublic';
 import Link from 'next/link'
 import Image from 'next/image';
 import { Rating } from 'react-simple-star-rating'
+import Loading from '../loading';
+import useAxiosPublic from '@/hooks/useAxiosPublic';
 
 export default function AllColleges() {
   const axiosPublic = useAxiosPublic();
@@ -79,7 +80,7 @@ export default function AllColleges() {
 
                 {/* Details Button */}
                 <div className="mt-4 text-right">
-                  <Link href={`/colleges/${college._id}`}>
+                  <Link href={`/College-Details/${college._id}`}>
                     <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-md transition">
                       Details
                     </button>
