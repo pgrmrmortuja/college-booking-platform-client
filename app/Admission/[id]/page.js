@@ -5,11 +5,13 @@ import useAxiosPublic from "@/hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import Loading from "@/app/loading";
 import { AuthContext } from "@/providers/AuthProvider";
+import useUser from "@/hooks/useUser";
 
 export default function AdmissionForm({ params }) {
     const { id } = params;
     const router = useRouter();
-    const { user } = useContext(AuthContext);
+    // const { user } = useContext(AuthContext);
+    const {dbUser} = useUser();
     const axiosPublic = useAxiosPublic();
 
     const [college, setCollege] = useState([]);
@@ -93,12 +95,12 @@ export default function AdmissionForm({ params }) {
 
                 <div>
                     <label className="block mb-1 font-medium">Candidate Name</label>
-                    <input name="name" type="text" defaultValue={user?.displayName || ""} required placeholder="Enter your name" className="input input-bordered w-full" />
+                    <input name="name" type="text" defaultValue={dbUser?.name || ""} required placeholder="Enter your name" className="input input-bordered w-full" />
                 </div>
 
                 <div>
                     <label className="block mb-1 font-medium">Candidate Email</label>
-                    <input name="email" type="email" defaultValue={user?.email || ""} required placeholder="Your email address" className="input input-bordered w-full" />
+                    <input name="email" type="email" defaultValue={dbUser?.email || ""} required placeholder="Your email address" className="input input-bordered w-full" />
                 </div>
 
                 <div>
@@ -123,7 +125,7 @@ export default function AdmissionForm({ params }) {
 
                 <div>
                     <label className="block mb-1 font-medium">Your Image</label>
-                    <input name="image" type="text" accept="image/*" defaultValue={user?.photoURL} required className="file-input w-full" />
+                    <input name="image" type="text" accept="image/*" defaultValue={dbUser?.image} required className="file-input w-full" />
                 </div>
 
                 <button type="submit" className="btn btn-primary w-full">Submit</button>

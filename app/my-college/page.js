@@ -7,9 +7,11 @@ import Loading from '../loading';
 import Image from 'next/image';
 import Swal from 'sweetalert2';
 import { Rating } from 'react-simple-star-rating';
+import useUser from '@/hooks/useUser';
 
 export default function MyCollege() {
-    const { user } = useContext(AuthContext);
+    // const { user } = useContext(AuthContext);
+    const {dbUser} = useUser();
     const axiosPublic = useAxiosPublic();
 
     const [admission, setAdmission] = useState(null);
@@ -20,10 +22,10 @@ export default function MyCollege() {
     // Fetch admission & college data
     useEffect(() => {
         const fetchData = async () => {
-            if (!user?.email) return;
+            if (!dbUser?.email) return;
 
             try {
-                const admissionRes = await axiosPublic.get(`/my-college/${user.email}`);
+                const admissionRes = await axiosPublic.get(`/my-college/${dbUser.email}`);
                 setAdmission(admissionRes.data);
 
                 if (admissionRes.data?.length > 0) {
@@ -39,7 +41,7 @@ export default function MyCollege() {
         };
 
         fetchData();
-    }, [user?.email]);
+    }, [dbUser?.email]);
 
     if (loading) return <Loading />;
 

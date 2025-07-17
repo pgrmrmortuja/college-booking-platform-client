@@ -67,7 +67,7 @@ export default function CollegeDetails({ params }) {
                                 allowFraction
                                 fillColor="#facc15"
                             />
-                            <span className="ml-2 text-sm text-gray-700">{college.rating?.toFixed(1)}</span>
+                            <span className="ml-2 text-sm text-gray-700">{college.rating}</span>
                         </div>
                     </div>
 

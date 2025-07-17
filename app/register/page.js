@@ -1,5 +1,6 @@
 "use client";
 
+import useAxiosPublic from "@/hooks/useAxiosPublic";
 import { AuthContext } from "@/providers/AuthProvider";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -12,7 +13,7 @@ const Register = () => {
     const { createNewUser, setUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext);
 
     const router = useRouter();
-
+    const axiosPublic = useAxiosPublic();
     const [error, setError] = useState({});
     const [showPassword, setShowPassword] = useState(false);
 
@@ -22,7 +23,7 @@ const Register = () => {
 
         const form = e.target;
         const name = form.name.value;
-        const photo = form.photo.value;
+        const image = form.image.value;
         const email = form.email.value;
         const password = form.password.value;
 
@@ -40,53 +41,66 @@ const Register = () => {
             .then((result) => {
                 setUser(result.user);
 
-                updateUserProfile({ displayName: name, photoURL: photo })
+                updateUserProfile({ displayName: name, photoURL: image })
                     .then(() => {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Registration Successful!',
-                            text: 'Welcome!',
-                            showConfirmButton: false,
-                            timer: 2000
-                        });
-                        navigate("/");
+
+                        const userInfo = {
+                            name: name,
+                            email: email,
+                            image: image,
+                            role: 'user'
+                        };
+
+                        // ✅ MongoDB
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                console.log("User saved to DB:", res.data);
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Registration Successful!',
+                                    text: 'Welcome!',
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                });
+                                router.push("/");
+                            })
+                            .catch(err => {
+                                console.error("Failed to save user to DB:", err.message);
+                            });
                     })
-                    .catch((err) => {
-                        console.log("Error", err.message);
-                    });
             })
-            .catch((error) => {
-                console.log("Error ", error.message);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Registration Failed',
-                    text: 'Something went wrong. Please try again.'
-                });
-            });
     };
 
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
             .then(result => {
-                console.log(result.user);
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Google Sign-In Successful!',
-                    text: 'Welcome!',
-                    showConfirmButton: false,
-                    timer: 2000
-                });
-                navigate('/');
+                const googleUser = result.user;
+
+                const userInfo = {
+                    name: googleUser.displayName,
+                    email: googleUser.email,
+                    image: googleUser.photoURL,
+                    role: 'user'
+                };
+
+                // ✅ MongoDB-
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        console.log("Google user saved:", res.data);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Google Sign-In Successful!',
+                            text: 'Welcome!',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                         router.push("/"); 
+                    })
+                    .catch(err => {
+                        console.error("Failed to save Google user:", err.message);
+                    });
             })
-            .catch(error => {
-                console.log('ERROR', error.message);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Google Sign-In Failed',
-                    text: 'Something went wrong. Please try again.'
-                });
-            });
     };
 
 
@@ -120,7 +134,7 @@ const Register = () => {
                     <div>
                         <label className="block mb-1 text-sm font-medium text-black">Photo URL</label>
                         <input
-                            name="photo"
+                            name="image"
                             type="text"
                             placeholder="Photo URL"
                             required

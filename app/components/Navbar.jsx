@@ -4,10 +4,11 @@ import { FaUserCircle } from "react-icons/fa";
 import { useState, useContext } from "react";
 import Link from "next/link";
 import { AuthContext } from "@/providers/AuthProvider";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const router = useRouter();
 
   const { user, logOut } = useContext(AuthContext);
 
