@@ -15,12 +15,12 @@ export default function CollegeDetails({ params }) {
     const [college, setCollege] = useState(null);
 
     useEffect(() => {
-        const fetchBlogs = async () => {
+        const fetchCollege = async () => {
             const response = await axiosPublic.get(`/college/${id}`);
             setCollege(response.data);
         };
 
-        fetchBlogs();
+        fetchCollege();
     }, [id]);
 
     console.log(college);
