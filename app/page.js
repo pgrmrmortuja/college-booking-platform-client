@@ -1,5 +1,6 @@
 "use client";
 import Cards from "./components/Cards";
+import CollegeGallery from "./components/Gallery";
 import SearchComponent from "./components/Search";
 
 
@@ -10,6 +11,8 @@ export default function HomePage() {
       <SearchComponent />
 
       <Cards></Cards>
+
+      <CollegeGallery></CollegeGallery>
 
       
     </div>
