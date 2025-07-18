@@ -1,6 +1,8 @@
 "use client";
 import Cards from "./components/Cards";
 import CollegeGallery from "./components/Gallery";
+import ResearchPapers from "./components/Research";
+import CollegeReviews from "./components/Reviews";
 import SearchComponent from "./components/Search";
 
 
@@ -13,6 +15,10 @@ export default function HomePage() {
       <Cards></Cards>
 
       <CollegeGallery></CollegeGallery>
+
+      <ResearchPapers></ResearchPapers>
+
+      <CollegeReviews></CollegeReviews>
 
       
     </div>
