@@ -6,12 +6,13 @@ import Swal from "sweetalert2";
 import Loading from "@/app/loading";
 import { AuthContext } from "@/providers/AuthProvider";
 import useUser from "@/hooks/useUser";
+import PrivateRoute from "@/routes/PrivateRoute";
 
 export default function AdmissionForm({ params }) {
     const { id } = params;
     const router = useRouter();
     // const { user } = useContext(AuthContext);
-    const {dbUser} = useUser();
+    const { dbUser } = useUser();
     const axiosPublic = useAxiosPublic();
 
     const [college, setCollege] = useState([]);
@@ -77,59 +78,63 @@ export default function AdmissionForm({ params }) {
     };
 
     return (
-        <div className="max-w-xl mx-auto p-6 bg-white shadow rounded-lg mt-10">
-            <h2 className="text-2xl font-bold mb-4 text-center">Admission Form</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
+        <PrivateRoute>
+            <div className="max-w-xl mx-auto p-6 bg-white shadow rounded-lg mt-10">
+                <h2 className="text-2xl font-bold mb-4 text-center">Admission Form</h2>
+                <form onSubmit={handleSubmit} className="space-y-4">
 
-                <div>
-                    <label className="block mb-1 font-medium">College Name</label>
-                    <input
-                        name="college_name"
-                        type="text"
-                        value={college.college_name}
-                        disabled
-                        readOnly
-                        className="input input-bordered w-full bg-gray-100"
-                    />
-                </div>
+                    <div>
+                        <label className="block mb-1 font-medium">College Name</label>
+                        <input
+                            name="college_name"
+                            type="text"
+                            value={college.college_name}
+                            disabled
+                            readOnly
+                            className="input input-bordered w-full bg-gray-100"
+                        />
+                    </div>
 
-                <div>
-                    <label className="block mb-1 font-medium">Candidate Name</label>
-                    <input name="name" type="text" defaultValue={dbUser?.name || ""} required placeholder="Enter your name" className="input input-bordered w-full" />
-                </div>
+                    <div>
+                        <label className="block mb-1 font-medium">Candidate Name</label>
+                        <input name="name" type="text" defaultValue={dbUser?.name || ""} required placeholder="Enter your name" className="input input-bordered w-full" />
+                    </div>
 
-                <div>
-                    <label className="block mb-1 font-medium">Candidate Email</label>
-                    <input name="email" type="email" defaultValue={dbUser?.email || ""} required placeholder="Your email address" className="input input-bordered w-full" />
-                </div>
+                    <div>
+                        <label className="block mb-1 font-medium">Candidate Email</label>
+                        <input name="email" type="email" defaultValue={dbUser?.email || ""} required placeholder="Your email address" className="input input-bordered w-full" />
+                    </div>
 
-                <div>
-                    <label className="block mb-1 font-medium">Subject</label>
-                    <input name="subject" type="text" required placeholder="Subject you want to study" className="input input-bordered w-full" />
-                </div>
+                    <div>
+                        <label className="block mb-1 font-medium">Subject</label>
+                        <input name="subject" type="text" required placeholder="Subject you want to study" className="input input-bordered w-full" />
+                    </div>
 
-                <div>
-                    <label className="block mb-1 font-medium">Phone Number</label>
-                    <input name="phone" type="tel" required placeholder="Your phone number" className="input input-bordered w-full" />
-                </div>
+                    <div>
+                        <label className="block mb-1 font-medium">Phone Number</label>
+                        <input name="phone" type="tel" required placeholder="Your phone number" className="input input-bordered w-full" />
+                    </div>
 
-                <div>
-                    <label className="block mb-1 font-medium">Address</label>
-                    <input name="address" type="text" required placeholder="Your current address" className="input input-bordered w-full" />
-                </div>
+                    <div>
+                        <label className="block mb-1 font-medium">Address</label>
+                        <input name="address" type="text" required placeholder="Your current address" className="input input-bordered w-full" />
+                    </div>
 
-                <div>
-                    <label className="block mb-1 font-medium">Date of Birth</label>
-                    <input name="dob" type="date" required className="input input-bordered w-full" />
-                </div>
+                    <div>
+                        <label className="block mb-1 font-medium">Date of Birth</label>
+                        <input name="dob" type="date" required className="input input-bordered w-full" />
+                    </div>
 
-                <div>
-                    <label className="block mb-1 font-medium">Your Image</label>
-                    <input name="image" type="text" accept="image/*" defaultValue={dbUser?.image} required className="file-input w-full" />
-                </div>
+                    <div>
+                        <label className="block mb-1 font-medium">Your Image</label>
+                        <input name="image" type="text" accept="image/*" defaultValue={dbUser?.image} required className="file-input w-full" />
+                    </div>
 
-                <button type="submit" className="btn btn-primary w-full">Submit</button>
-            </form>
-        </div>
+                    <button type="submit" className="btn btn-primary w-full">Submit</button>
+                </form>
+            </div>
+        </PrivateRoute>
+
+
     );
 }

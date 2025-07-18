@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Left - Site Name */}
-          <div className="text-2xl font-bold">CollegeWala</div>
+          <div className="text-2xl font-bold">Campus</div>
 
           {/* Middle - Navigation Links */}
           <div className="flex space-x-6 text-sm">
@@ -36,7 +36,7 @@ export default function Footer() {
 
         {/* Bottom Text */}
         <div className="text-center text-sm text-gray-400 mt-6">
-          © {new Date().getFullYear()} CollegeWala. All rights reserved.
+          © {new Date().getFullYear()} Campus. All rights reserved.
         </div>
       </div>
     </footer>

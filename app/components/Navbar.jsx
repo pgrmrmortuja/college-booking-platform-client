@@ -13,6 +13,12 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const router = useRouter();
 
+  const goToProfile = () => {
+    setTimeout(() => {
+      router.push("/Profile");
+    }, 100);
+  };
+
   // Theme state with localStorage
   const [theme, setTheme] = useState(() => {
     if (typeof window !== "undefined") {
@@ -44,8 +50,17 @@ const Navbar = () => {
       <Link href="/" className={linkClass("/")}>Home</Link>
       <Link href="/College" className={linkClass("/College")}>Colleges</Link>
       <Link href="/Admission" className={linkClass("/Admission")}>Admission</Link>
-      <Link href="/my-college" className={linkClass("/my-college")}>My College</Link>
-      <Link href="/Profile" className={linkClass("/Profile")}>My Profile</Link>
+      {
+        user && (
+          <Link href="/my-college" className={linkClass("/my-college")}>My College</Link>
+        )
+      }
+      {
+        user && (
+          <Link href="/Profile" className={linkClass("/Profile")}>My Profile</Link>
+        )
+      }
+
     </>
   );
 
@@ -143,7 +158,7 @@ const Navbar = () => {
           <Link href="/"
             className="flex justify-center items-center gap-2">
             <GiModernCity className="text-xl md:text-2xl text-pink-600" />
-            <span className="text-xl md:text-2xl text-pink-600 font-semibold">CollegeWala</span>
+            <span className="text-xl md:text-2xl text-pink-600 font-semibold">Campus</span>
           </Link>
         </div>
 
@@ -189,14 +204,30 @@ const Navbar = () => {
           <div className="dropdown">
             <div tabIndex={0} className="m-1">
               {user && user?.email ? (
-                <img
-                  className="w-10 h-10 rounded-full border-2 border-pink-500"
-                  src={user?.photoURL}
-                  alt="User Avatar"
-                />
+                <div className="dropdown">
+                  <div tabIndex={0} role="button" className="m-1">
+                    <img
+                      className="w-10 h-10 rounded-full border-2 border-pink-500"
+                      src={user?.photoURL}
+                      alt="User Avatar"
+                    />
+                  </div>
+                  {/* Dropdown Menu */}
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+                  >
+                    <li>
+                      <button onClick={goToProfile} className="w-full text-left">
+                        My Profile
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+
               ) : (
                 <img
-                  className="my-tooltip w-10 h-10 rounded-full"
+                  className=" w-10 h-10 rounded-full"
                   src={userIcon}
                   alt="Default Avatar"
                 />

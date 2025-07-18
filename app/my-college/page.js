@@ -8,10 +8,11 @@ import Image from 'next/image';
 import Swal from 'sweetalert2';
 import { Rating } from 'react-simple-star-rating';
 import useUser from '@/hooks/useUser';
+import PrivateRoute from '@/routes/PrivateRoute';
 
 export default function MyCollege() {
     // const { user } = useContext(AuthContext);
-    const {dbUser} = useUser();
+    const { dbUser } = useUser();
     const axiosPublic = useAxiosPublic();
 
     const [admission, setAdmission] = useState(null);
@@ -55,7 +56,7 @@ export default function MyCollege() {
     // };
 
     const handleRating = (rate, e) => {
-        e?.preventDefault?.(); 
+        e?.preventDefault?.();
         setRating(rate / 20);
     };
 
@@ -99,91 +100,94 @@ export default function MyCollege() {
     };
 
     return (
-        <div>
-            <h1 className="text-3xl font-bold text-indigo-600 text-center mb-8">
-                🎓 My College Details
-            </h1>
+        <PrivateRoute>
+            <div>
+                <h1 className="text-3xl font-bold text-indigo-600 text-center mb-8">
+                    🎓 My College Details
+                </h1>
 
-            {/* College Image */}
-            <div className="flex justify-center mb-10">
-                <Image
-                    src={college?.college_image}
-                    alt={college?.college_name}
-                    width={400}
-                    height={250}
-                    className="rounded-lg object-cover"
-                    // fill
-                    priority
-                />
-            </div>
-
-            {/* Info Section */}
-            <div className="flex flex-col md:flex-row md:space-x-10 gap-10 mb-12">
-                {/* College Info */}
-                <div className="md:w-1/2 bg-white p-6 rounded-xl shadow-md">
-                    <h2 className="text-2xl font-semibold mb-4 text-gray-800">{college?.college_name}</h2>
-                    <p className="mb-2"><strong>Admission Date:</strong> {college?.admission_date}</p>
-                    <p className="mb-2 flex items-center gap-2">
-                        <strong>Rating:</strong>
-                        <Rating
-                            initialValue={parseFloat(college?.rating)}
-                            readonly
-                            allowFraction
-                            SVGstyle={{ display: "inline-block" }}
-                            size={20}
-                        />
-                        ({college?.rating})
-                        {/* ({college?.rating_count || 0} ratings) */}
-                    </p>
-                    <p className="mb-2"><strong>Research Papers Published:</strong> {college?.research_number}</p>
-                    <p className="mb-2"><strong>Research Focus:</strong> {college?.research_history}</p>
-                    <p className="mb-2"><strong>Sports Info:</strong> {college?.sports_info}</p>
-                    <p><strong>Events:</strong> {college?.events}</p>
+                {/* College Image */}
+                <div className="flex justify-center mb-10">
+                    <Image
+                        src={college?.college_image}
+                        alt={college?.college_name}
+                        width={400}
+                        height={250}
+                        className="rounded-lg object-cover"
+                        // fill
+                        priority
+                    />
                 </div>
 
-                {/* Student Info */}
-                <div className="md:w-1/2 bg-white p-6 rounded-xl shadow-md">
-                    <h2 className="text-2xl font-semibold mb-4 text-gray-800">👤 Student Information</h2>
-                    <p className="mb-2"><strong>Name:</strong> {admission[0]?.name}</p>
-                    <p className="mb-2"><strong>Email:</strong> {admission[0]?.email}</p>
-                    <p className="mb-2"><strong>Subject:</strong> {admission[0]?.subject}</p>
-                    <p className="mb-2"><strong>Phone:</strong> {admission[0]?.phone}</p>
-                    <p className="mb-2"><strong>Address:</strong> {admission[0]?.address}</p>
-                    <p><strong>Date of Birth:</strong> {admission[0]?.dob}</p>
-                </div>
-            </div>
-
-            {/* Review Form */}
-            <div className="bg-white p-6 rounded-xl shadow-md max-w-4xl mx-auto">
-                <h2 className="text-2xl font-semibold mb-4 text-gray-800 text-center">📝 Give Review</h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    {/* ⭐ Rating Input */}
-                    <div className="text-center">
-                        <Rating
-                            onClick={handleRating}
-                            initialValue={rating}
-                            allowFraction
-                            transition={true}
-                            SVGstyle={{ display: 'inline' }}
-                        />
+                {/* Info Section */}
+                <div className="flex flex-col md:flex-row md:space-x-10 gap-10 mb-12">
+                    {/* College Info */}
+                    <div className="md:w-1/2 bg-white p-6 rounded-xl shadow-md">
+                        <h2 className="text-2xl font-semibold mb-4 text-gray-800">{college?.college_name}</h2>
+                        <p className="mb-2"><strong>Admission Date:</strong> {college?.admission_date}</p>
+                        <p className="mb-2 flex items-center gap-2">
+                            <strong>Rating:</strong>
+                            <Rating
+                                initialValue={parseFloat(college?.rating)}
+                                readonly
+                                allowFraction
+                                SVGstyle={{ display: "inline-block" }}
+                                size={20}
+                            />
+                            ({college?.rating})
+                            {/* ({college?.rating_count || 0} ratings) */}
+                        </p>
+                        <p className="mb-2"><strong>Research Papers Published:</strong> {college?.research_number}</p>
+                        <p className="mb-2"><strong>Research Focus:</strong> {college?.research_history}</p>
+                        <p className="mb-2"><strong>Sports Info:</strong> {college?.sports_info}</p>
+                        <p><strong>Events:</strong> {college?.events}</p>
                     </div>
 
-                    <textarea
-                        placeholder="Write your review here..."
-                        name='college_review'
-                        required
-                        className="w-full p-3 border border-gray-300 rounded-md resize-none focus:outline-indigo-500"
-                        rows={5}
-                    ></textarea>
+                    {/* Student Info */}
+                    <div className="md:w-1/2 bg-white p-6 rounded-xl shadow-md">
+                        <h2 className="text-2xl font-semibold mb-4 text-gray-800">👤 Student Information</h2>
+                        <p className="mb-2"><strong>Name:</strong> {admission[0]?.name}</p>
+                        <p className="mb-2"><strong>Email:</strong> {admission[0]?.email}</p>
+                        <p className="mb-2"><strong>Subject:</strong> {admission[0]?.subject}</p>
+                        <p className="mb-2"><strong>Phone:</strong> {admission[0]?.phone}</p>
+                        <p className="mb-2"><strong>Address:</strong> {admission[0]?.address}</p>
+                        <p><strong>Date of Birth:</strong> {admission[0]?.dob}</p>
+                    </div>
+                </div>
 
-                    <button
-                        type="submit"
-                        className="bg-indigo-600 text-white px-6 py-2 rounded-md w-full hover:bg-indigo-700 transition"
-                    >
-                        Submit Review
-                    </button>
-                </form>
+                {/* Review Form */}
+                <div className="bg-white p-6 rounded-xl shadow-md max-w-4xl mx-auto">
+                    <h2 className="text-2xl font-semibold mb-4 text-gray-800 text-center">📝 Give Review</h2>
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        {/* ⭐ Rating Input */}
+                        <div className="text-center">
+                            <Rating
+                                onClick={handleRating}
+                                initialValue={rating}
+                                allowFraction
+                                transition={true}
+                                SVGstyle={{ display: 'inline' }}
+                            />
+                        </div>
+
+                        <textarea
+                            placeholder="Write your review here..."
+                            name='college_review'
+                            required
+                            className="w-full p-3 border border-gray-300 rounded-md resize-none focus:outline-indigo-500"
+                            rows={5}
+                        ></textarea>
+
+                        <button
+                            type="submit"
+                            className="bg-indigo-600 text-white px-6 py-2 rounded-md w-full hover:bg-indigo-700 transition"
+                        >
+                            Submit Review
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
+        </PrivateRoute>
+
     )
 }
